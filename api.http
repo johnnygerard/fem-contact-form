@@ -1,0 +1,11 @@
+###
+POST http://localhost:3000/api/contact-us
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "john.smith@example.com",
+  "query": 1,
+  "message": "Hello, I'd like to get a refund for my order!"
+}
