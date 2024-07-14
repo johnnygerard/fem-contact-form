@@ -24,6 +24,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "start": "node dist/server.js",
+    "start:dev": "node --env-file=.env dist/server.js",
     "lint": "eslint ."
   },
   "type": "module"
