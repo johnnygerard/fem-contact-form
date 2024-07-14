@@ -1,7 +1,7 @@
 import { env } from "node:process";
 import nodemailer from "nodemailer";
 
-export const MSGID_REGEX = /MSGID=(?<msgId>[a-zA-Z0-9-]+)/;
+export const MSGID_REGEX = /MSGID=(?<msgId>[^\]]+)/;
 
 if (!env.ETHEREAL_PWD) {
   throw Error("Missing environment variable: ETHEREAL_PWD");
