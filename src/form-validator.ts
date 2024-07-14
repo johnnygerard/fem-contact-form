@@ -1,21 +1,10 @@
 import { Ajv, JSONSchemaType } from "ajv";
 import addFormats from "ajv-formats";
+import { ContactForm } from "./types/contact-form.js";
+import { ContactFormQuery } from "./types/contact-form.enum.js";
 
 const ajv = new Ajv();
 addFormats.default(ajv);
-
-enum ContactFormQuery {
-  GENERAL_INQUIRY,
-  SUPPORT_REQUEST,
-}
-
-type ContactForm = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  query: ContactFormQuery;
-  message: string;
-};
 
 // JSON Schema draft-07 (https://ajv.js.org/json-schema.html)
 const schema: JSONSchemaType<ContactForm> = {
@@ -24,7 +13,13 @@ const schema: JSONSchemaType<ContactForm> = {
     firstName: { type: "string" },
     lastName: { type: "string" },
     email: { type: "string", format: "email" },
-    query: { type: "number", enum: [0, 1] },
+    query: {
+      type: "number",
+      enum: [
+        ContactFormQuery.GENERAL_INQUIRY,
+        ContactFormQuery.SUPPORT_REQUEST,
+      ],
+    },
     message: { type: "string" },
   },
   required: ["firstName", "lastName", "email", "query", "message"],
