@@ -15,7 +15,7 @@ app.get("/", (_req, res) => {
   res.send("Hello, world!\n");
 });
 
-app.post("/contact-us", jsonParser, async (req, res, next) => {
+app.post("/api/contact-us", jsonParser, async (req, res, next) => {
   try {
     const isValid = validate(req.body);
 
