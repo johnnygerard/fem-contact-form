@@ -15,7 +15,8 @@
   },
   "scripts": {
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "start": "node dist/server.js"
   },
   "type": "module"
 }
