@@ -22,9 +22,10 @@
     "npm": "^10"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cd client && npm ci --include=dev && npm run build && mv dist/fem-contact-form/browser ../public",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "heroku-cleanup": "rm -rf client",
     "start": "node dist/server.js",
     "start:dev": "node --watch --env-file=.env dist/server.js",
     "lint": "eslint ."
