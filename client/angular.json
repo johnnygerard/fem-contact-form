@@ -92,7 +92,8 @@
               "buildTarget": "fem-contact-form:build:production"
             },
             "development": {
-              "buildTarget": "fem-contact-form:build:development"
+              "buildTarget": "fem-contact-form:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
