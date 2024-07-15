@@ -14,11 +14,12 @@ import {
   Validators,
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
+import { ToastComponent } from "../toast/toast.component";
 
 @Component({
   selector: "app-contact-form",
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ToastComponent],
   templateUrl: "./contact-form.component.html",
   styles: `
     :host {
