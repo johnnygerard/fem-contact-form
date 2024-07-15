@@ -1,5 +1,6 @@
 import { env } from "node:process";
 import nodemailer from "nodemailer";
+import { ContactForm } from "./types/contact-form.js";
 
 export const MSGID_REGEX = /MSGID=(?<msgId>[^\]]+)/;
 
@@ -15,3 +16,16 @@ export const transporter = nodemailer.createTransport({
     pass: env.ETHEREAL_PWD,
   },
 });
+
+export function createPlainTextEmail(form: ContactForm): string {
+  return `Dear ${form.firstName} ${form.lastName},
+
+Thank you for reaching out to us. Our team will review your request and get back to you as soon as possible.
+
+Here is a summary of your request:
+
+> ${form.message}
+
+Best regards,
+The Customer Service Team`;
+}

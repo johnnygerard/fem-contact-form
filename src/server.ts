@@ -1,6 +1,6 @@
 import express from "express";
 import { env } from "node:process";
-import { MSGID_REGEX, transporter } from "./mail.js";
+import { createPlainTextEmail, MSGID_REGEX, transporter } from "./mail.js";
 import { validate } from "./form-validator.js";
 import { ContactForm } from "./types/contact-form.js";
 import { ContactFormQuery } from "./types/contact-form.enum.js";
@@ -36,7 +36,7 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
         form.query === ContactFormQuery.GENERAL_INQUIRY
           ? "General Inquiry"
           : "Support Request",
-      text: form.message,
+      text: createPlainTextEmail(form),
     });
 
     const msgId = info.response.match(MSGID_REGEX)?.groups?.msgId;
