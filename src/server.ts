@@ -58,7 +58,7 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     }
 
     const publicUrl = `https://ethereal.email/message/${msgId}`;
-    res.send(`Message sent! Public URL: ${publicUrl}\n`);
+    res.send({ publicUrl });
   } catch (err) {
     next(err);
   }
