@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 
 @Component({
@@ -6,8 +6,11 @@ import { RouterOutlet } from "@angular/router";
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: "./app.component.html",
-  styles: [],
+  styles: `
+    :host {
+      display: block;
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = "fem-contact-form";
-}
+export class AppComponent {}
