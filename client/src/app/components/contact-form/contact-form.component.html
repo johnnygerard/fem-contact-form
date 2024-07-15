@@ -1,3 +1,7 @@
+@if (isSuccess()) {
+  <p>Message Sent!</p>
+  <p>Thanks for completing the form. We’ll be in touch soon!</p>
+}
 <form [formGroup]="formControls" (ngSubmit)="onSubmit()">
   <h1>Contact Us</h1>
 

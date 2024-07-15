@@ -2,6 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  OnDestroy,
+  signal,
   viewChild,
 } from "@angular/core";
 import {
@@ -11,6 +13,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from "@angular/forms";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-contact-form",
@@ -24,8 +27,9 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnDestroy {
   ngForm = viewChild.required(FormGroupDirective);
+  #http = inject(HttpClient);
 
   formControls = inject(FormBuilder).group({
     firstName: ["", Validators.required],
@@ -37,6 +41,12 @@ export class ContactFormComponent {
   });
 
   readonly REQUIRED_ERROR_MSG = "This field is required";
+  isSuccess = signal(false);
+  #timeoutId = 0;
+
+  ngOnDestroy(): void {
+    window.clearTimeout(this.#timeoutId);
+  }
 
   hasEmailError(): boolean {
     const control = this.formControls.controls.email;
@@ -53,5 +63,29 @@ export class ContactFormComponent {
 
   onSubmit(): void {
     if (this.ngForm().invalid) return;
+
+    const formData = this.formControls.value;
+    const payload = {
+      firstName: formData.firstName as string,
+      lastName: formData.lastName as string,
+      email: formData.email as string,
+      query: parseInt(formData.query as string),
+      message: formData.message as string,
+    };
+
+    this.#http
+      .post<{
+        publicUrl: string;
+      }>("/api/contact-us", payload)
+      .subscribe((response) => {
+        window.console.log("Message sent:", response.publicUrl);
+        this.isSuccess.set(true);
+        this.ngForm().resetForm();
+
+        const TTL = 5000;
+        this.#timeoutId = window.setTimeout(() => {
+          this.isSuccess.set(false);
+        }, TTL);
+      });
   }
 }
