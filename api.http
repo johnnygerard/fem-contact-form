@@ -1,4 +1,5 @@
 ###
+# Valid request
 POST http://localhost:3000/api/contact-us
 Content-Type: application/json
 
@@ -9,3 +10,47 @@ Content-Type: application/json
   "query": 1,
   "message": "Hello, I'd like to get a refund for my order!"
 }
+
+> {%
+  client.test("Status code is 200", () => {
+    client.assert(response.status === 200, `Bad status code: ${response.status}`);
+  });
+%}
+
+###
+# Invalid email
+POST http://localhost:3000/api/contact-us
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "john.smith@examplecom",
+  "query": 1,
+  "message": "Hello, I'd like to get a refund for my order!"
+}
+
+> {%
+  client.test("Status code is 400", () => {
+    client.assert(response.status === 400, `Bad status code: ${response.status}`);
+  });
+%}
+
+###
+# Invalid query
+POST http://localhost:3000/api/contact-us
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "john.smith@example.com",
+  "query": 100,
+  "message": "Hello, I'd like to get a refund for my order!"
+}
+
+> {%
+  client.test("Status code is 400", () => {
+    client.assert(response.status === 400, `Bad status code: ${response.status}`);
+  });
+%}
