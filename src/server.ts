@@ -4,6 +4,10 @@ import { MSGID_REGEX, transporter } from "./mail.js";
 import { validate } from "./form-validator.js";
 import { ContactForm } from "./types/contact-form.js";
 import { ContactFormQuery } from "./types/contact-form.enum.js";
+import {
+  BAD_REQUEST,
+  INTERNAL_SERVER_ERROR,
+} from "./types/http-status-code.js";
 
 const PORT: number = +(env.PORT ?? 3000);
 const isProduction: boolean = env.NODE_ENV === "production";
@@ -20,7 +24,7 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     const isValid = validate(req.body);
 
     if (!isValid) {
-      next(JSON.stringify(validate.errors));
+      res.status(BAD_REQUEST).json(validate.errors);
       return;
     }
 
@@ -36,7 +40,13 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     });
 
     const msgId = info.response.match(MSGID_REGEX)?.groups?.msgId;
-    if (!msgId) throw Error("Failed to extract message ID");
+
+    if (!msgId) {
+      res
+        .status(INTERNAL_SERVER_ERROR)
+        .send({ error: "Failed to extract message ID" });
+      return;
+    }
 
     const publicUrl = `https://ethereal.email/message/${msgId}`;
     res.send(`Message sent! Public URL: ${publicUrl}\n`);
