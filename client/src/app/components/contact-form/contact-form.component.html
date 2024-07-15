@@ -3,15 +3,30 @@
 
   <!-- firstName -->
   <label for="f-first-name">First Name</label>
-  <input type="text" id="f-first-name" formControlName="firstName" />
+  <input
+    type="text"
+    id="f-first-name"
+    formControlName="firstName"
+    autocomplete="given-name"
+  />
 
   <!-- lastName -->
   <label for="f-last-name">Last Name</label>
-  <input type="text" id="f-last-name" formControlName="lastName" />
+  <input
+    type="text"
+    id="f-last-name"
+    formControlName="lastName"
+    autocomplete="family-name"
+  />
 
   <!-- email -->
   <label for="f-email">Email</label>
-  <input type="email" id="f-email" formControlName="email" />
+  <input
+    type="email"
+    id="f-email"
+    formControlName="email"
+    autocomplete="email"
+  />
 
   <!-- query -->
   <fieldset>
@@ -26,7 +41,11 @@
 
   <!-- message -->
   <label for="f-message">Message</label>
-  <textarea id="f-message" formControlName="message"></textarea>
+  <textarea
+    id="f-message"
+    formControlName="message"
+    autocomplete="off"
+  ></textarea>
 
   <!-- consent -->
   <label for="f-consent">I consent to being contacted by the team</label>
