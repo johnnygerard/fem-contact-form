@@ -1,4 +1,4 @@
-<form [formGroup]="formControls">
+<form [formGroup]="formControls" (ngSubmit)="onSubmit()">
   <h1>Contact Us</h1>
 
   <!-- firstName -->
@@ -9,6 +9,9 @@
     formControlName="firstName"
     autocomplete="given-name"
   />
+  @if (hasRequiredError(formControls.controls.firstName)) {
+    <div>{{ REQUIRED_ERROR_MSG }}</div>
+  }
 
   <!-- lastName -->
   <label for="f-last-name">Last Name</label>
@@ -18,6 +21,9 @@
     formControlName="lastName"
     autocomplete="family-name"
   />
+  @if (hasRequiredError(formControls.controls.lastName)) {
+    <div>{{ REQUIRED_ERROR_MSG }}</div>
+  }
 
   <!-- email -->
   <label for="f-email">Email</label>
@@ -27,6 +33,12 @@
     formControlName="email"
     autocomplete="email"
   />
+  @if (hasRequiredError(formControls.controls.email)) {
+    <div>{{ REQUIRED_ERROR_MSG }}</div>
+  }
+  @if (hasEmailError()) {
+    <div>Please enter a valid email address</div>
+  }
 
   <!-- query -->
   <fieldset>
@@ -38,6 +50,9 @@
     <label for="f-query-type-1">Support Request</label>
     <input type="radio" id="f-query-type-1" formControlName="query" value="1" />
   </fieldset>
+  @if (hasRequiredError(formControls.controls.query)) {
+    <div>Please select a query type</div>
+  }
 
   <!-- message -->
   <label for="f-message">Message</label>
@@ -46,10 +61,16 @@
     formControlName="message"
     autocomplete="off"
   ></textarea>
+  @if (hasRequiredError(formControls.controls.message)) {
+    <div>{{ REQUIRED_ERROR_MSG }}</div>
+  }
 
   <!-- consent -->
   <label for="f-consent">I consent to being contacted by the team</label>
   <input type="checkbox" id="f-consent" formControlName="consent" />
+  @if (hasRequiredError(formControls.controls.consent)) {
+    <div>To submit this form, please consent to being contacted</div>
+  }
 
   <button type="submit">Submit</button>
 </form>
