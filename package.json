@@ -26,9 +26,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "heroku-cleanup": "rm -rf client",
+    "lint": "eslint .",
+    "reinstall": "npm ci && cd client && npm ci",
     "start": "node dist/server.js",
-    "start:dev": "node --watch --env-file=.env dist/server.js",
-    "lint": "eslint ."
+    "start:dev": "tsc && node --watch --env-file=.env dist/server.js"
   },
   "type": "module"
 }
