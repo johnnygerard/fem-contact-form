@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const palette = {
   gray: {
@@ -20,6 +21,43 @@ export default {
       canvas: palette.green[200],
     },
     extend: {},
+    fontFamily: {
+      sans: ["Karla", ...defaultTheme.fontFamily.sans],
+    },
+    fontSize: {
+      heading: [
+        "32px",
+        {
+          lineHeight: "100%",
+          letterSpacing: "-1px",
+          fontWeight: "700",
+        },
+      ],
+      "base-bold": [
+        "18px",
+        {
+          lineHeight: "150%",
+          letterSpacing: "0",
+          fontWeight: "700",
+        },
+      ],
+      base: [
+        "18px",
+        {
+          lineHeight: "150%",
+          letterSpacing: "0",
+          fontWeight: "400",
+        },
+      ],
+      sm: [
+        "16px",
+        {
+          lineHeight: "150%",
+          letterSpacing: "0",
+          fontWeight: "400",
+        },
+      ],
+    },
     screens: {
       tablet: "768px",
       desktop: "1440px",
