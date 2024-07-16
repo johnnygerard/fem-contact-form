@@ -9,6 +9,11 @@ for (const value of [100, 150, 200, 300, 400, 500, 1600])
 export default {
   content: ["./src/**/*.{html,ts}"],
   theme: {
+    borderRadius: {
+      DEFAULT: spacingScale[100],
+      md: spacingScale[150],
+      lg: spacingScale[200],
+    },
     colors: {
       gray: {
         500: "#86A2A5",
