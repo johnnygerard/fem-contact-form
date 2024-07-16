@@ -1,7 +1,11 @@
 @if (isSuccess()) {
   <app-toast />
 }
-<form [formGroup]="formControls" (ngSubmit)="onSubmit()">
+<form
+  class="flex flex-col bg-white rounded-lg p-300 md:p-500"
+  [formGroup]="formControls"
+  (ngSubmit)="onSubmit()"
+>
   <h1>Contact Us</h1>
 
   <div>
