@@ -16,6 +16,9 @@ const palette = {
 export default {
   content: ["./src/**/*.{html,ts}"],
   theme: {
+    colors: {
+      canvas: palette.green[200],
+    },
     extend: {},
     screens: {
       tablet: "768px",
