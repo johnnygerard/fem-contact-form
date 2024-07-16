@@ -65,8 +65,8 @@ export default {
       ],
     },
     screens: {
-      tablet: "768px",
-      desktop: "1440px",
+      md: "768px", // Tablet
+      xl: "1440px", // Desktop
     },
     spacing: spacingScale,
   },
