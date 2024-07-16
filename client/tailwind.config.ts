@@ -14,6 +14,11 @@ const palette = {
   white: "#FFF",
 };
 
+// Generate spacing scale (100 = 8px)
+const spacingScale: { [key: number]: string } = {};
+for (const value of [100, 150, 200, 300, 400, 500, 1600])
+  spacingScale[value] = `${value / 12.5}px`;
+
 export default {
   content: ["./src/**/*.{html,ts}"],
   theme: {
@@ -62,15 +67,7 @@ export default {
       tablet: "768px",
       desktop: "1440px",
     },
-    spacing: {
-      100: "8px",
-      150: "12px",
-      200: "16px",
-      300: "24px",
-      400: "32px",
-      500: "40px",
-      1600: "128px",
-    },
+    spacing: spacingScale,
   },
   plugins: [],
 } satisfies Config;
