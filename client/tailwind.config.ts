@@ -24,6 +24,15 @@ export default {
       tablet: "768px",
       desktop: "1440px",
     },
+    spacing: {
+      100: "8px",
+      150: "12px",
+      200: "16px",
+      300: "24px",
+      400: "32px",
+      500: "40px",
+      1600: "128px",
+    },
   },
   plugins: [],
 } satisfies Config;
