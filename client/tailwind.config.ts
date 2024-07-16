@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import plugin from "tailwindcss/plugin";
 
 // Generate spacing scale (100 = 8px)
 const spacingScale: { [key: number]: string } = {};
@@ -70,5 +71,10 @@ export default {
     },
     spacing: spacingScale,
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant("hocus", ["&:hover", "&:focus"]);
+      addVariant("hocus-visible", ["&:hover", "&:focus-visible"]);
+    }),
+  ],
 } satisfies Config;
