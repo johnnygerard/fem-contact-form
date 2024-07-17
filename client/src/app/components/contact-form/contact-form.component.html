@@ -6,12 +6,12 @@
   [formGroup]="formControls"
   (ngSubmit)="onSubmit()"
 >
-  <h1>Contact Us</h1>
+  <h1 class="text-heading">Contact Us</h1>
 
   <div>
     <!-- firstName -->
     <div>
-      <label for="f-first-name">First Name</label>
+      <label class="text-sm" for="f-first-name">First Name</label>
       <input
         class="c-text-field-border"
         type="text"
@@ -20,13 +20,13 @@
         autocomplete="given-name"
       />
       @if (hasRequiredError(formControls.controls.firstName)) {
-        <div>{{ REQUIRED_ERROR_MSG }}</div>
+        <div class="text-sm text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
 
     <!-- lastName -->
     <div>
-      <label for="f-last-name">Last Name</label>
+      <label class="text-sm" for="f-last-name">Last Name</label>
       <input
         class="c-text-field-border"
         type="text"
@@ -35,14 +35,14 @@
         autocomplete="family-name"
       />
       @if (hasRequiredError(formControls.controls.lastName)) {
-        <div>{{ REQUIRED_ERROR_MSG }}</div>
+        <div class="text-sm text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
   </div>
 
   <!-- email -->
   <div>
-    <label for="f-email">Email</label>
+    <label class="text-sm" for="f-email">Email</label>
     <input
       class="c-text-field-border"
       type="email"
@@ -51,16 +51,16 @@
       autocomplete="email"
     />
     @if (hasRequiredError(formControls.controls.email)) {
-      <div>{{ REQUIRED_ERROR_MSG }}</div>
+      <div class="text-sm text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
     @if (hasEmailError()) {
-      <div>Please enter a valid email address</div>
+      <div class="text-sm text-red">Please enter a valid email address</div>
     }
   </div>
 
   <!-- query -->
   <fieldset>
-    <legend>Query Type</legend>
+    <legend class="text-sm">Query Type</legend>
 
     <div>
       <div class="c-radio-field-border">
@@ -84,13 +84,13 @@
       </div>
     </div>
     @if (hasRequiredError(formControls.controls.query)) {
-      <div>Please select a query type</div>
+      <div class="text-sm text-red">Please select a query type</div>
     }
   </fieldset>
 
   <!-- message -->
   <div>
-    <label for="f-message">Message</label>
+    <label class="text-sm" for="f-message">Message</label>
     <textarea
       class="c-text-field-border resize-none"
       id="f-message"
@@ -98,13 +98,15 @@
       autocomplete="off"
     ></textarea>
     @if (hasRequiredError(formControls.controls.message)) {
-      <div>{{ REQUIRED_ERROR_MSG }}</div>
+      <div class="text-sm text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
   </div>
 
   <!-- consent -->
   <div>
-    <label for="f-consent">I consent to being contacted by the team</label>
+    <label class="text-sm" for="f-consent"
+      >I consent to being contacted by the team</label
+    >
     <input
       class="c-text-field-border"
       type="checkbox"
@@ -112,9 +114,11 @@
       formControlName="consent"
     />
     @if (hasRequiredError(formControls.controls.consent)) {
-      <div>To submit this form, please consent to being contacted</div>
+      <div class="text-sm text-red">
+        To submit this form, please consent to being contacted
+      </div>
     }
   </div>
 
-  <button type="submit">Submit</button>
+  <button class="text-base-bold" type="submit">Submit</button>
 </form>
