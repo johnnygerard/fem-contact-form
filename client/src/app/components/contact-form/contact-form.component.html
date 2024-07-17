@@ -2,7 +2,7 @@
   <app-toast />
 }
 <form
-  class="p-300 md:p-500 flex flex-col rounded-lg bg-white"
+  class="p-300 md:p-500 flex flex-col rounded-lg bg-white text-sm"
   [formGroup]="formControls"
   (ngSubmit)="onSubmit()"
 >
@@ -11,60 +11,60 @@
   <div>
     <!-- firstName -->
     <div>
-      <label class="text-sm" for="f-first-name">First Name</label>
+      <label for="f-first-name">First Name</label>
       <input
-        class="c-text-field-border"
+        class="c-text-field-border text-base"
         type="text"
         id="f-first-name"
         formControlName="firstName"
         autocomplete="given-name"
       />
       @if (hasRequiredError(formControls.controls.firstName)) {
-        <div class="text-red text-sm">{{ REQUIRED_ERROR_MSG }}</div>
+        <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
 
     <!-- lastName -->
     <div>
-      <label class="text-sm" for="f-last-name">Last Name</label>
+      <label for="f-last-name">Last Name</label>
       <input
-        class="c-text-field-border"
+        class="c-text-field-border text-base"
         type="text"
         id="f-last-name"
         formControlName="lastName"
         autocomplete="family-name"
       />
       @if (hasRequiredError(formControls.controls.lastName)) {
-        <div class="text-red text-sm">{{ REQUIRED_ERROR_MSG }}</div>
+        <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
   </div>
 
   <!-- email -->
   <div>
-    <label class="text-sm" for="f-email">Email</label>
+    <label for="f-email">Email</label>
     <input
-      class="c-text-field-border"
+      class="c-text-field-border text-base"
       type="email"
       id="f-email"
       formControlName="email"
       autocomplete="email"
     />
     @if (hasRequiredError(formControls.controls.email)) {
-      <div class="text-red text-sm">{{ REQUIRED_ERROR_MSG }}</div>
+      <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
     @if (hasEmailError()) {
-      <div class="text-red text-sm">Please enter a valid email address</div>
+      <div class="text-red">Please enter a valid email address</div>
     }
   </div>
 
   <!-- query -->
   <fieldset>
-    <legend class="text-sm">Query Type</legend>
+    <legend>Query Type</legend>
 
     <div>
       <div class="c-radio-field-border">
-        <label for="f-query-type-0">General Enquiry</label>
+        <label class="text-base" for="f-query-type-0">General Enquiry</label>
         <input
           type="radio"
           id="f-query-type-0"
@@ -74,7 +74,7 @@
       </div>
 
       <div class="c-radio-field-border">
-        <label for="f-query-type-1">Support Request</label>
+        <label class="text-base" for="f-query-type-1">Support Request</label>
         <input
           type="radio"
           id="f-query-type-1"
@@ -84,29 +84,27 @@
       </div>
     </div>
     @if (hasRequiredError(formControls.controls.query)) {
-      <div class="text-red text-sm">Please select a query type</div>
+      <div class="text-red">Please select a query type</div>
     }
   </fieldset>
 
   <!-- message -->
   <div>
-    <label class="text-sm" for="f-message">Message</label>
+    <label for="f-message">Message</label>
     <textarea
-      class="c-text-field-border resize-none"
+      class="c-text-field-border resize-none text-base"
       id="f-message"
       formControlName="message"
       autocomplete="off"
     ></textarea>
     @if (hasRequiredError(formControls.controls.message)) {
-      <div class="text-red text-sm">{{ REQUIRED_ERROR_MSG }}</div>
+      <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
   </div>
 
   <!-- consent -->
   <div>
-    <label class="text-sm" for="f-consent"
-      >I consent to being contacted by the team</label
-    >
+    <label for="f-consent">I consent to being contacted by the team</label>
     <input
       class="c-text-field-border"
       type="checkbox"
@@ -114,7 +112,7 @@
       formControlName="consent"
     />
     @if (hasRequiredError(formControls.controls.consent)) {
-      <div class="text-red text-sm">
+      <div class="text-red">
         To submit this form, please consent to being contacted
       </div>
     }
