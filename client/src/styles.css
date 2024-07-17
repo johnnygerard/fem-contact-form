@@ -4,10 +4,10 @@
 
 @layer components {
   .c-text-field-border {
-    @apply border border-gray-500 rounded hocus:border-green-600 outline-none;
+    @apply hocus:border-green-600 rounded border border-gray-500 outline-none;
   }
 
   .c-radio-field-border {
-    @apply border border-gray-500 rounded hover:border-green-600 has-[:checked,:focus]:border-green-600;
+    @apply rounded border border-gray-500 hover:border-green-600 has-[:checked,:focus]:border-green-600;
   }
 }
