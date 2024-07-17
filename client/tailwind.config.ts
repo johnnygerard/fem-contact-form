@@ -70,6 +70,9 @@ export default {
       xl: "1440px", // Desktop
     },
     spacing: spacingScale,
+    width: {
+      "form-mobile": `calc(100vw - 2 * ${spacingScale[200]})`,
+    },
   },
   plugins: [
     plugin(({ addVariant }) => {
