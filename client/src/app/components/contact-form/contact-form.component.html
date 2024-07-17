@@ -13,6 +13,7 @@
     <div>
       <label for="f-first-name">First Name</label>
       <input
+        class="c-text-field-border"
         type="text"
         id="f-first-name"
         formControlName="firstName"
@@ -27,6 +28,7 @@
     <div>
       <label for="f-last-name">Last Name</label>
       <input
+        class="c-text-field-border"
         type="text"
         id="f-last-name"
         formControlName="lastName"
@@ -42,6 +44,7 @@
   <div>
     <label for="f-email">Email</label>
     <input
+      class="c-text-field-border"
       type="email"
       id="f-email"
       formControlName="email"
@@ -60,7 +63,7 @@
     <legend>Query Type</legend>
 
     <div>
-      <div>
+      <div class="c-radio-field-border">
         <label for="f-query-type-0">General Enquiry</label>
         <input
           type="radio"
@@ -70,7 +73,7 @@
         />
       </div>
 
-      <div>
+      <div class="c-radio-field-border">
         <label for="f-query-type-1">Support Request</label>
         <input
           type="radio"
@@ -89,7 +92,7 @@
   <div>
     <label for="f-message">Message</label>
     <textarea
-      class="resize-none"
+      class="c-text-field-border resize-none"
       id="f-message"
       formControlName="message"
       autocomplete="off"
@@ -102,7 +105,12 @@
   <!-- consent -->
   <div>
     <label for="f-consent">I consent to being contacted by the team</label>
-    <input type="checkbox" id="f-consent" formControlName="consent" />
+    <input
+      class="c-text-field-border"
+      type="checkbox"
+      id="f-consent"
+      formControlName="consent"
+    />
     @if (hasRequiredError(formControls.controls.consent)) {
       <div>To submit this form, please consent to being contacted</div>
     }
