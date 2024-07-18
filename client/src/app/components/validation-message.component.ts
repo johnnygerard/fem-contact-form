@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
   template: `{{ content() }}`,
   host: {
     class: "block text-red",
+    "@fadeIn": "",
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

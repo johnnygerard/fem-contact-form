@@ -16,6 +16,7 @@ import {
 import { HttpClient } from "@angular/common/http";
 import { ToastComponent } from "../toast/toast.component";
 import { ValidationMessageComponent } from "../validation-message.component";
+import { animate, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: "app-contact-form",
@@ -28,6 +29,14 @@ import { ValidationMessageComponent } from "../validation-message.component";
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger("fadeIn", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("300ms ease-out", style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ContactFormComponent implements OnDestroy {
   ngForm = viewChild.required(FormGroupDirective);
