@@ -19,7 +19,7 @@
         formControlName="firstName"
         autocomplete="given-name"
       />
-      @if (hasRequiredError(formControls.controls.firstName)) {
+      @if (hasVisibleErrors(formControls.controls.firstName, "required")) {
         <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
@@ -34,7 +34,7 @@
         formControlName="lastName"
         autocomplete="family-name"
       />
-      @if (hasRequiredError(formControls.controls.lastName)) {
+      @if (hasVisibleErrors(formControls.controls.lastName, "required")) {
         <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
@@ -50,10 +50,10 @@
       formControlName="email"
       autocomplete="email"
     />
-    @if (hasRequiredError(formControls.controls.email)) {
+    @if (hasVisibleErrors(formControls.controls.email, "required")) {
       <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
-    @if (hasEmailError()) {
+    @if (hasVisibleErrors(formControls.controls.email, "email")) {
       <div class="text-red">Please enter a valid email address</div>
     }
   </div>
@@ -88,7 +88,7 @@
         </div>
       }
     </div>
-    @if (hasRequiredError(formControls.controls.query)) {
+    @if (hasVisibleErrors(formControls.controls.query, "required")) {
       <div class="text-red">Please select a query type</div>
     }
   </div>
@@ -102,7 +102,7 @@
       formControlName="message"
       autocomplete="off"
     ></textarea>
-    @if (hasRequiredError(formControls.controls.message)) {
+    @if (hasVisibleErrors(formControls.controls.message, "required")) {
       <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
   </div>
@@ -113,7 +113,7 @@
       <input type="checkbox" id="f-consent" formControlName="consent" />
       <label for="f-consent">I consent to being contacted by the team</label>
     </div>
-    @if (hasRequiredError(formControls.controls.consent)) {
+    @if (hasVisibleErrors(formControls.controls.consent, "required")) {
       <div class="text-red mt-100">
         To submit this form, please consent to being contacted
       </div>

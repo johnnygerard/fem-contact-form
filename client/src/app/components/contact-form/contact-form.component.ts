@@ -49,17 +49,13 @@ export class ContactFormComponent implements OnDestroy {
     window.clearTimeout(this.#timeoutId);
   }
 
-  hasEmailError(): boolean {
-    const control = this.formControls.controls.email;
-    return control.hasError("email") && this.#shouldDisplayError(control);
-  }
+  hasVisibleErrors(control: FormControl, errorCode?: string): boolean {
+    const shouldDisplayErrors = this.ngForm().submitted || control.touched;
 
-  hasRequiredError(control: FormControl): boolean {
-    return control.hasError("required") && this.#shouldDisplayError(control);
-  }
-
-  #shouldDisplayError(control: FormControl): boolean {
-    return control.touched || this.ngForm().submitted;
+    return (
+      shouldDisplayErrors &&
+      (errorCode ? control.hasError(errorCode) : control.invalid)
+    );
   }
 
   onSubmit(): void {
