@@ -73,7 +73,6 @@
       ) {
         <div
           class="py-150 px-300 gap-150 relative flex cursor-pointer items-center rounded border border-gray-500 bg-white transition-colors has-[:checked]:bg-green-200 hover:has-[:checked]:bg-white md:flex-1 [&:is(:hover,:has(:checked,:focus))]:border-green-600"
-          [class.!border-red]="hasVisibleErrors(fg.controls.query)"
           (click)="radio.click()"
         >
           <input
