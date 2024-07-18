@@ -69,17 +69,22 @@
         let i = $index
       ) {
         <div
-          class="rounded border border-gray-500 md:flex-1 [&:is(:hover,:has(:checked,:focus))]:border-green-600"
+          class="py-150 px-300 cursor-pointer rounded border border-gray-500 bg-white transition-colors duration-300 ease-out has-[:checked]:bg-green-200 hover:has-[:checked]:bg-white md:flex-1 [&:is(:hover,:has(:checked,:focus))]:border-green-600"
+          (click)="radio.click(); radio.focus()"
         >
           <input
+            class="mr-150"
             type="radio"
             id="f-query-type-{{ i }}"
             formControlName="query"
             [value]="i"
+            #radio
           />
-          <label class="text-base" for="f-query-type-{{ i }}">{{
-            queryType
-          }}</label>
+          <label
+            class="pointer-events-none text-base"
+            for="f-query-type-{{ i }}"
+            >{{ queryType }}</label
+          >
         </div>
       }
     </div>
