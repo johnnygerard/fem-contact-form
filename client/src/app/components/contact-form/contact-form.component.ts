@@ -15,11 +15,12 @@ import {
 } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { ToastComponent } from "../toast/toast.component";
+import { ValidationMessageComponent } from "../validation-message.component";
 
 @Component({
   selector: "app-contact-form",
   standalone: true,
-  imports: [ReactiveFormsModule, ToastComponent],
+  imports: [ReactiveFormsModule, ToastComponent, ValidationMessageComponent],
   templateUrl: "./contact-form.component.html",
   styles: `
     :host {
@@ -41,7 +42,6 @@ export class ContactFormComponent implements OnDestroy {
     consent: [false, Validators.requiredTrue],
   });
 
-  readonly REQUIRED_ERROR_MSG = "This field is required";
   isSuccess = signal(false);
   #timeoutId = 0;
 

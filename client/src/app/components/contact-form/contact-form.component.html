@@ -21,7 +21,7 @@
         autocomplete="given-name"
       />
       @if (hasVisibleErrors(fg.controls.firstName, "required")) {
-        <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
+        <app-validation-message />
       }
     </div>
 
@@ -37,7 +37,7 @@
         autocomplete="family-name"
       />
       @if (hasVisibleErrors(fg.controls.lastName, "required")) {
-        <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
+        <app-validation-message />
       }
     </div>
   </div>
@@ -54,10 +54,10 @@
       autocomplete="email"
     />
     @if (hasVisibleErrors(fg.controls.email, "required")) {
-      <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
+      <app-validation-message />
     }
     @if (hasVisibleErrors(fg.controls.email, "email")) {
-      <div class="text-red">Please enter a valid email address</div>
+      <app-validation-message content="Please enter a valid email address" />
     }
   </div>
 
@@ -93,7 +93,7 @@
       }
     </div>
     @if (hasVisibleErrors(fg.controls.query, "required")) {
-      <div class="text-red">Please select a query type</div>
+      <app-validation-message content="Please select a query type" />
     }
   </div>
 
@@ -108,7 +108,7 @@
       autocomplete="off"
     ></textarea>
     @if (hasVisibleErrors(fg.controls.message, "required")) {
-      <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
+      <app-validation-message />
     }
   </div>
 
@@ -119,9 +119,10 @@
       <label for="f-consent">I consent to being contacted by the team</label>
     </div>
     @if (hasVisibleErrors(fg.controls.consent, "required")) {
-      <div class="text-red mt-100">
-        To submit this form, please consent to being contacted
-      </div>
+      <app-validation-message
+        class="mt-100"
+        content="To submit this form, please consent to being contacted"
+      />
     }
   </div>
 
