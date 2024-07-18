@@ -3,7 +3,7 @@
 }
 <form
   class="p-300 md:p-500 w-form-mobile flex flex-col rounded-lg bg-white text-sm md:w-[690px] xl:w-[736px]"
-  [formGroup]="formControls"
+  [formGroup]="fg"
   (ngSubmit)="onSubmit()"
 >
   <h1 class="text-heading">Contact Us</h1>
@@ -14,13 +14,13 @@
       <label for="f-first-name">First Name</label>
       <input
         class="c-text-field"
-        [class.!border-red]="hasVisibleErrors(formControls.controls.firstName)"
+        [class.!border-red]="hasVisibleErrors(fg.controls.firstName)"
         type="text"
         id="f-first-name"
         formControlName="firstName"
         autocomplete="given-name"
       />
-      @if (hasVisibleErrors(formControls.controls.firstName, "required")) {
+      @if (hasVisibleErrors(fg.controls.firstName, "required")) {
         <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
@@ -30,13 +30,13 @@
       <label for="f-last-name">Last Name</label>
       <input
         class="c-text-field"
-        [class.!border-red]="hasVisibleErrors(formControls.controls.lastName)"
+        [class.!border-red]="hasVisibleErrors(fg.controls.lastName)"
         type="text"
         id="f-last-name"
         formControlName="lastName"
         autocomplete="family-name"
       />
-      @if (hasVisibleErrors(formControls.controls.lastName, "required")) {
+      @if (hasVisibleErrors(fg.controls.lastName, "required")) {
         <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
       }
     </div>
@@ -47,16 +47,16 @@
     <label for="f-email">Email</label>
     <input
       class="c-text-field"
-      [class.!border-red]="hasVisibleErrors(formControls.controls.email)"
+      [class.!border-red]="hasVisibleErrors(fg.controls.email)"
       type="email"
       id="f-email"
       formControlName="email"
       autocomplete="email"
     />
-    @if (hasVisibleErrors(formControls.controls.email, "required")) {
+    @if (hasVisibleErrors(fg.controls.email, "required")) {
       <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
-    @if (hasVisibleErrors(formControls.controls.email, "email")) {
+    @if (hasVisibleErrors(fg.controls.email, "email")) {
       <div class="text-red">Please enter a valid email address</div>
     }
   </div>
@@ -73,7 +73,7 @@
       ) {
         <div
           class="py-150 px-300 cursor-pointer rounded border border-gray-500 bg-white transition-colors has-[:checked]:bg-green-200 hover:has-[:checked]:bg-white md:flex-1 [&:is(:hover,:has(:checked,:focus))]:border-green-600"
-          [class.!border-red]="hasVisibleErrors(formControls.controls.query)"
+          [class.!border-red]="hasVisibleErrors(fg.controls.query)"
           (click)="radio.click(); radio.focus()"
         >
           <input
@@ -92,7 +92,7 @@
         </div>
       }
     </div>
-    @if (hasVisibleErrors(formControls.controls.query, "required")) {
+    @if (hasVisibleErrors(fg.controls.query, "required")) {
       <div class="text-red">Please select a query type</div>
     }
   </div>
@@ -102,12 +102,12 @@
     <label for="f-message">Message</label>
     <textarea
       class="c-text-field h-[240px] resize-none md:h-[132px] xl:h-[105px]"
-      [class.!border-red]="hasVisibleErrors(formControls.controls.message)"
+      [class.!border-red]="hasVisibleErrors(fg.controls.message)"
       id="f-message"
       formControlName="message"
       autocomplete="off"
     ></textarea>
-    @if (hasVisibleErrors(formControls.controls.message, "required")) {
+    @if (hasVisibleErrors(fg.controls.message, "required")) {
       <div class="text-red">{{ REQUIRED_ERROR_MSG }}</div>
     }
   </div>
@@ -118,7 +118,7 @@
       <input type="checkbox" id="f-consent" formControlName="consent" />
       <label for="f-consent">I consent to being contacted by the team</label>
     </div>
-    @if (hasVisibleErrors(formControls.controls.consent, "required")) {
+    @if (hasVisibleErrors(fg.controls.consent, "required")) {
       <div class="text-red mt-100">
         To submit this form, please consent to being contacted
       </div>

@@ -32,7 +32,7 @@ export class ContactFormComponent implements OnDestroy {
   ngForm = viewChild.required(FormGroupDirective);
   #http = inject(HttpClient);
 
-  formControls = inject(FormBuilder).group({
+  fg = inject(FormBuilder).group({
     firstName: ["", Validators.required],
     lastName: ["", Validators.required],
     email: ["", [Validators.required, Validators.email]],
@@ -61,7 +61,7 @@ export class ContactFormComponent implements OnDestroy {
   onSubmit(): void {
     if (this.ngForm().invalid) return;
 
-    const formData = this.formControls.value;
+    const formData = this.fg.value;
     const payload = {
       firstName: formData.firstName as string,
       lastName: formData.lastName as string,
