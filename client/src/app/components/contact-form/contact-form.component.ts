@@ -89,4 +89,8 @@ export class ContactFormComponent implements OnDestroy {
         }, TTL);
       });
   }
+
+  isSubmissionDisabled(): boolean {
+    return this.ngForm().submitted && (this.ngForm().invalid ?? false);
+  }
 }

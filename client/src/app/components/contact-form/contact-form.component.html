@@ -121,8 +121,9 @@
   </div>
 
   <button
-    class="text-base-bold py-200 hocus-visible:bg-[#063F35] rounded bg-green-600 text-white -outline-offset-4 transition-[background-color]"
+    class="text-base-bold py-200 hocus-visible:bg-[#063F35] disabled:hover:bg-red rounded bg-green-600 text-white -outline-offset-4 transition-[background-color] disabled:cursor-not-allowed"
     type="submit"
+    [disabled]="isSubmissionDisabled()"
   >
     Submit
   </button>
