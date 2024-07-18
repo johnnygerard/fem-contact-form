@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .c-text-field-border {
-    @apply hocus:border-green-600 rounded border border-gray-500 outline-none transition-[border-color];
+  .c-text-field {
+    @apply hocus:border-green-600 rounded border border-gray-500 text-base outline-none transition-[border-color];
   }
 }
