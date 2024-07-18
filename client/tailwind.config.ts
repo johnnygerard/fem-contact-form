@@ -70,6 +70,12 @@ export default {
       xl: "1440px", // Desktop
     },
     spacing: spacingScale,
+    transitionDuration: {
+      DEFAULT: "300ms",
+    },
+    transitionTimingFunction: {
+      DEFAULT: "ease-out",
+    },
     width: {
       "form-mobile": `calc(100vw - 2 * ${spacingScale[200]})`,
     },
