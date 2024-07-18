@@ -4,6 +4,6 @@
 
 @layer components {
   .c-text-field-border {
-    @apply hocus:border-green-600 rounded border border-gray-500 outline-none;
+    @apply hocus:border-green-600 rounded border border-gray-500 outline-none transition-[border-color];
   }
 }
