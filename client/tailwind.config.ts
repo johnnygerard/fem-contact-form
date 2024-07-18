@@ -27,11 +27,7 @@ export default {
       red: "#D73C3C",
       white: "#FFF",
     },
-    extend: {
-      width: {
-        "form-mobile": `calc(100vw - 2 * ${spacingScale[200]})`,
-      },
-    },
+    extend: {},
     fontFamily: {
       sans: ["Karla", ...defaultTheme.fontFamily.sans],
     },
