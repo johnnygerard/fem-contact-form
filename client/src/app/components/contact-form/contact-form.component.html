@@ -5,6 +5,7 @@
   class="p-300 md:p-500 w-form-mobile flex flex-col rounded-lg bg-white text-sm md:w-[690px] xl:w-[736px]"
   [formGroup]="fg"
   (ngSubmit)="onSubmit()"
+  spellcheck="false"
 >
   <h1 class="text-heading">Contact Us</h1>
 
@@ -117,6 +118,7 @@
       id="f-message"
       formControlName="message"
       autocomplete="off"
+      spellcheck
     ></textarea>
     @if (hasVisibleErrors(fg.controls.message, "required")) {
       <app-validation-message />
