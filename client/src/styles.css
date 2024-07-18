@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .c-star {
+    @apply after:ml-100 after:text-green-600 after:content-['*'];
+  }
+
   .c-text-field {
     @apply hocus:border-green-600 py-150 px-300 rounded border border-gray-500 text-base outline-none transition-[border-color];
   }

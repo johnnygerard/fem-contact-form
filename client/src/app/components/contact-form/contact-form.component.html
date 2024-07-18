@@ -11,7 +11,7 @@
   <div class="gap-300 md:gap-200 mt-400 flex flex-col md:flex-row">
     <!-- firstName -->
     <div class="gap-100 flex flex-col md:flex-1">
-      <label for="f-first-name">First Name<app-star /></label>
+      <label class="c-star" for="f-first-name">First Name</label>
       <input
         class="c-text-field"
         [class.!border-red]="hasVisibleErrors(fg.controls.firstName)"
@@ -27,7 +27,7 @@
 
     <!-- lastName -->
     <div class="gap-100 flex flex-col md:flex-1">
-      <label for="f-last-name">Last Name<app-star /></label>
+      <label class="c-star" for="f-last-name">Last Name</label>
       <input
         class="c-text-field"
         [class.!border-red]="hasVisibleErrors(fg.controls.lastName)"
@@ -44,7 +44,7 @@
 
   <!-- email -->
   <div class="gap-100 mt-300 flex flex-col">
-    <label for="f-email">Email Address<app-star /></label>
+    <label class="c-star" for="f-email">Email Address</label>
     <input
       class="c-text-field"
       [class.!border-red]="hasVisibleErrors(fg.controls.email)"
@@ -63,7 +63,7 @@
 
   <!-- query -->
   <div class="my-300 gap-200 flex flex-col">
-    <div>Query Type<app-star /></div>
+    <div class="c-star">Query Type</div>
 
     <div class="gap-200 flex flex-col md:flex-row">
       @for (
@@ -99,7 +99,7 @@
 
   <!-- message -->
   <div class="gap-100 flex flex-col">
-    <label for="f-message">Message<app-star /></label>
+    <label class="c-star" for="f-message">Message</label>
     <textarea
       class="c-text-field h-[240px] resize-none md:h-[132px] xl:h-[105px]"
       [class.!border-red]="hasVisibleErrors(fg.controls.message)"
@@ -116,9 +116,9 @@
   <div class="my-500">
     <div class="gap-200 flex">
       <input type="checkbox" id="f-consent" formControlName="consent" />
-      <label for="f-consent"
-        >I consent to being contacted by the team<app-star
-      /></label>
+      <label class="c-star" for="f-consent"
+        >I consent to being contacted by the team</label
+      >
     </div>
     @if (hasVisibleErrors(fg.controls.consent, "required")) {
       <app-validation-message
