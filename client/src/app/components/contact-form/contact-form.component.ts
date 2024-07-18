@@ -16,11 +16,17 @@ import {
 import { HttpClient } from "@angular/common/http";
 import { ToastComponent } from "../toast/toast.component";
 import { ValidationMessageComponent } from "../validation-message.component";
+import { StarComponent } from "./star.component";
 
 @Component({
   selector: "app-contact-form",
   standalone: true,
-  imports: [ReactiveFormsModule, ToastComponent, ValidationMessageComponent],
+  imports: [
+    ReactiveFormsModule,
+    ToastComponent,
+    ValidationMessageComponent,
+    StarComponent,
+  ],
   templateUrl: "./contact-form.component.html",
   styles: `
     :host {
