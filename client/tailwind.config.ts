@@ -27,7 +27,11 @@ export default {
       red: "#D73C3C",
       white: "#FFF",
     },
-    extend: {},
+    extend: {
+      width: {
+        "form-mobile": `calc(100vw - 2 * ${spacingScale[200]})`,
+      },
+    },
     fontFamily: {
       sans: ["Karla", ...defaultTheme.fontFamily.sans],
     },
@@ -75,9 +79,6 @@ export default {
     },
     transitionTimingFunction: {
       DEFAULT: "ease-out",
-    },
-    width: {
-      "form-mobile": `calc(100vw - 2 * ${spacingScale[200]})`,
     },
   },
   plugins: [

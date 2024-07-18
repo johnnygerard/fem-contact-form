@@ -43,6 +43,7 @@ export class ContactFormComponent implements OnDestroy {
   });
 
   isSuccess = signal(false);
+  hasConsented = signal(false);
   #timeoutId = 0;
 
   ngOnDestroy(): void {
@@ -56,6 +57,11 @@ export class ContactFormComponent implements OnDestroy {
       shouldDisplayErrors &&
       (errorCode ? control.hasError(errorCode) : control.invalid)
     );
+  }
+
+  onConsentChange(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    this.hasConsented.set(checkbox.checked);
   }
 
   onSubmit(): void {
