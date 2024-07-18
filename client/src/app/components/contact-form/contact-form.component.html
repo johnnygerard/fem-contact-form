@@ -110,12 +110,7 @@
   <!-- consent -->
   <div class="my-500">
     <div class="gap-200 flex">
-      <input
-        class="c-text-field-border"
-        type="checkbox"
-        id="f-consent"
-        formControlName="consent"
-      />
+      <input type="checkbox" id="f-consent" formControlName="consent" />
       <label for="f-consent">I consent to being contacted by the team</label>
     </div>
     @if (hasRequiredError(formControls.controls.consent)) {
