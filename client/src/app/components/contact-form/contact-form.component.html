@@ -14,6 +14,7 @@
       <label for="f-first-name">First Name</label>
       <input
         class="c-text-field"
+        [class.!border-red]="hasVisibleErrors(formControls.controls.firstName)"
         type="text"
         id="f-first-name"
         formControlName="firstName"
@@ -29,6 +30,7 @@
       <label for="f-last-name">Last Name</label>
       <input
         class="c-text-field"
+        [class.!border-red]="hasVisibleErrors(formControls.controls.lastName)"
         type="text"
         id="f-last-name"
         formControlName="lastName"
@@ -45,6 +47,7 @@
     <label for="f-email">Email</label>
     <input
       class="c-text-field"
+      [class.!border-red]="hasVisibleErrors(formControls.controls.email)"
       type="email"
       id="f-email"
       formControlName="email"
@@ -70,6 +73,7 @@
       ) {
         <div
           class="py-150 px-300 cursor-pointer rounded border border-gray-500 bg-white transition-colors has-[:checked]:bg-green-200 hover:has-[:checked]:bg-white md:flex-1 [&:is(:hover,:has(:checked,:focus))]:border-green-600"
+          [class.!border-red]="hasVisibleErrors(formControls.controls.query)"
           (click)="radio.click(); radio.focus()"
         >
           <input
@@ -98,6 +102,7 @@
     <label for="f-message">Message</label>
     <textarea
       class="c-text-field h-[240px] resize-none md:h-[132px] xl:h-[105px]"
+      [class.!border-red]="hasVisibleErrors(formControls.controls.message)"
       id="f-message"
       formControlName="message"
       autocomplete="off"
