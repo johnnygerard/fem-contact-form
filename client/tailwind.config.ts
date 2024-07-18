@@ -4,7 +4,7 @@ import plugin from "tailwindcss/plugin";
 
 // Generate spacing scale (100 = 8px)
 const spacingScale: { [key: number]: string } = {};
-for (const value of [100, 150, 200, 300, 400, 500, 1600])
+for (const value of [0, 100, 150, 200, 300, 400, 500, 1600])
   spacingScale[value] = `${value / 12.5}px`;
 
 export default {
