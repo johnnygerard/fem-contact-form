@@ -30,11 +30,20 @@ import { animate, style, transition, trigger } from "@angular/animations";
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger("fadeIn", [
+    trigger("toast", [
       transition(":enter", [
-        style({ opacity: 0 }),
-        animate("300ms ease-out", style({ opacity: 1 })),
+        style({
+          top: "-155px",
+        }),
+        animate("300ms ease-out"),
       ]),
+      transition(":leave", [
+        style({ opacity: 1 }),
+        animate("600ms ease-out", style({ opacity: 0 })),
+      ]),
+    ]),
+    trigger("fadeIn", [
+      transition(":enter", [style({ opacity: 0 }), animate("300ms ease-out")]),
     ]),
   ],
 })
