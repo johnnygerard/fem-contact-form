@@ -42,7 +42,7 @@ import { animate, style, transition, trigger } from "@angular/animations";
         animate("600ms ease-out", style({ opacity: 0 })),
       ]),
     ]),
-    trigger("fadeIn", [
+    trigger("validationMessage", [
       transition(":enter", [style({ opacity: 0 }), animate("300ms ease-out")]),
     ]),
   ],
