@@ -60,6 +60,7 @@ export class ContactFormComponent implements OnDestroy {
     consent: [false, Validators.requiredTrue],
   });
 
+  isPending = signal(false);
   isSuccess = signal(false);
   #timeoutId = 0;
 
@@ -77,7 +78,7 @@ export class ContactFormComponent implements OnDestroy {
   }
 
   onSubmit(): void {
-    if (this.ngForm().invalid) return;
+    if (this.ngForm().invalid || this.isPending()) return;
 
     const formData = this.fg.value;
     const payload = {
@@ -95,6 +96,7 @@ export class ContactFormComponent implements OnDestroy {
       .subscribe((response) => {
         window.console.log("Message sent:", response.publicUrl);
         this.isSuccess.set(true);
+        this.isPending.set(false);
         this.ngForm().resetForm();
 
         const TTL = 5000;
@@ -102,6 +104,8 @@ export class ContactFormComponent implements OnDestroy {
           this.isSuccess.set(false);
         }, TTL);
       });
+
+    this.isPending.set(true);
   }
 
   isSubmissionDisabled(): boolean {
