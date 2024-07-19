@@ -15,3 +15,10 @@
 ::selection {
   @apply bg-green-600 text-white;
 }
+
+/* Disable all CSS transitions if the user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    @apply !transition-none;
+  }
+}

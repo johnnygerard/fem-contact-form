@@ -10,6 +10,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withFetch()),
-    provideAnimationsAsync(),
+    provideAnimationsAsync(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "noop"
+        : "animations",
+    ),
   ],
 };
