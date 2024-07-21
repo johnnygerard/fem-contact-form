@@ -1,13 +1,13 @@
 import express from "express";
 import { env } from "node:process";
-import { createPlainTextEmail, MSGID_REGEX, transporter } from "./mail.js";
-import { validate } from "./form-validator.js";
-import { ContactForm } from "./types/contact-form.js";
-import { ContactFormQuery } from "./types/contact-form.enum.js";
+import { createPlainTextEmail, MSGID_REGEX, transporter } from "./mail";
+import { validate } from "./form-validator";
+import { ContactForm } from "./types/contact-form";
+import { ContactFormQuery } from "./types/contact-form.enum";
 import {
   BAD_REQUEST,
   INTERNAL_SERVER_ERROR,
-} from "./types/http-status-code.js";
+} from "./types/http-status-code";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 

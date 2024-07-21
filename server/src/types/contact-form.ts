@@ -1,4 +1,4 @@
-import { ContactFormQuery } from "./contact-form.enum.js";
+import { ContactFormQuery } from "./contact-form.enum";
 
 export type ContactForm = {
   firstName: string;

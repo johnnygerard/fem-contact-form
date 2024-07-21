@@ -1,7 +1,7 @@
 import { Ajv, JSONSchemaType } from "ajv";
 import addFormats from "ajv-formats";
-import { ContactForm } from "./types/contact-form.js";
-import { ContactFormQuery } from "./types/contact-form.enum.js";
+import { ContactForm } from "./types/contact-form";
+import { ContactFormQuery } from "./types/contact-form.enum";
 
 const ajv = new Ajv();
 addFormats.default(ajv);

@@ -1,9 +1,7 @@
-/node_modules/
-/dist/
-/.env
-/public/
-
-# Angular client
 /client/node_modules/
 /client/dist/
 /client/.angular/cache/
+
+/server/node_modules/
+/server/dist/
+/server/.env

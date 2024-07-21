@@ -1,6 +1,6 @@
 import { env } from "node:process";
 import nodemailer from "nodemailer";
-import { ContactForm } from "./types/contact-form.js";
+import { ContactForm } from "./types/contact-form";
 
 export const MSGID_REGEX = /MSGID=(?<msgId>[^\]]+)/;
 
