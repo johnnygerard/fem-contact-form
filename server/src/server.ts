@@ -8,25 +8,11 @@ import {
   BAD_REQUEST,
   INTERNAL_SERVER_ERROR,
 } from "./types/http-status-code.js";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 const PORT: number = +(env.PORT ?? 3000);
 const isProduction: boolean = env.NODE_ENV === "production";
 const app = express();
 const jsonParser = express.json();
-const staticRoot: string = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "../public",
-);
-
-// Serve static assets
-app.use(express.static(staticRoot));
-
-// Serve single-page application (Angular client-side routing)
-app.get("*", (_req, res) => {
-  res.sendFile("index.html", { root: staticRoot });
-});
 
 app.post("/api/contact-us", jsonParser, async (req, res, next) => {
   try {
