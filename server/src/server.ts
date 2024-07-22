@@ -11,7 +11,7 @@ import {
 } from "./types/http-status-code.js";
 import cors from "cors";
 
-const CLIENT_ORIGIN = "https://fem-contact-form-jgerard.vercel.app/";
+const CLIENT_ORIGIN = "https://fem-contact-form-jgerard.vercel.app";
 const PORT: number = +(env.PORT ?? 3000);
 const app = express();
 const jsonParser = express.json();
