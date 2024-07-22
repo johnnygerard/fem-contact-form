@@ -7,12 +7,26 @@ import { ContactFormQuery } from "./types/contact-form.enum.js";
 import {
   BAD_REQUEST,
   INTERNAL_SERVER_ERROR,
+  NO_CONTENT,
 } from "./types/http-status-code.js";
+import cors from "cors";
 
+const CLIENT_ORIGIN = "https://fem-contact-form-jgerard.vercel.app/";
 const PORT: number = +(env.PORT ?? 3000);
-const isProduction: boolean = env.NODE_ENV === "production";
 const app = express();
 const jsonParser = express.json();
+
+// Enable CORS for the Angular client
+app.use(
+  cors({
+    allowedHeaders: "Content-Type",
+    maxAge: 86400,
+    methods: "POST",
+    optionsSuccessStatus: NO_CONTENT,
+    origin: env.HEROKU_ENV === "production" ? CLIENT_ORIGIN : "*",
+    preflightContinue: false,
+  }),
+);
 
 app.post("/api/contact-us", jsonParser, async (req, res, next) => {
   try {
@@ -50,7 +64,7 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
   }
 });
 
-if (isProduction) {
+if (env.NODE_ENV === "production") {
   // Omitted host defaults to 0.0.0.0 or [::] if IPv6 is supported
   app.listen(PORT, () => {
     console.log("Server listening on port", PORT);

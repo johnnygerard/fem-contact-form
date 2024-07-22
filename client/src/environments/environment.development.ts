@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: "", // Use proxy.conf.json to avoid CORS issues
+  apiUrl: "http://localhost:3000",
   production: false,
 };
