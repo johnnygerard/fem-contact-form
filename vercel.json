@@ -1,6 +1,6 @@
 {
   "buildCommand": "cd client && npm run vercel:build",
   "framework": "angular",
-  "installCommand": "cd client && npm ci",
+  "installCommand": "npm update --global npm && cd client && npm ci",
   "outputDirectory": "client/dist/fem-contact-form/browser"
 }
