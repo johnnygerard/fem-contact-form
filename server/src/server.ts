@@ -13,7 +13,6 @@ import cors from "cors";
 
 const CLIENT_ORIGIN = "https://fem-contact-form-jgerard.vercel.app/";
 const PORT: number = +(env.PORT ?? 3000);
-const isProduction: boolean = env.NODE_ENV === "production";
 const app = express();
 const jsonParser = express.json();
 
@@ -24,7 +23,7 @@ app.use(
     maxAge: 86400,
     methods: "POST",
     optionsSuccessStatus: NO_CONTENT,
-    origin: isProduction ? CLIENT_ORIGIN : "*",
+    origin: env.HEROKU_ENV === "production" ? CLIENT_ORIGIN : "*",
     preflightContinue: false,
   }),
 );
@@ -65,7 +64,7 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
   }
 });
 
-if (isProduction) {
+if (env.NODE_ENV === "production") {
   // Omitted host defaults to 0.0.0.0 or [::] if IPv6 is supported
   app.listen(PORT, () => {
     console.log("Server listening on port", PORT);
