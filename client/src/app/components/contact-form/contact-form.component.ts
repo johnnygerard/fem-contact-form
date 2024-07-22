@@ -17,6 +17,7 @@ import { HttpClient } from "@angular/common/http";
 import { ToastComponent } from "../toast/toast.component";
 import { ValidationMessageComponent } from "../validation-message.component";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: "app-contact-form",
@@ -92,7 +93,7 @@ export class ContactFormComponent implements OnDestroy {
     this.#http
       .post<{
         publicUrl: string;
-      }>("/api/contact-us", payload)
+      }>(`${environment.apiUrl}/api/contact-us`, payload)
       .subscribe((response) => {
         window.console.log("Message sent:", response.publicUrl);
         this.isSuccess.set(true);
