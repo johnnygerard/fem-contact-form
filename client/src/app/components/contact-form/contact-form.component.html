@@ -16,6 +16,7 @@
       <input
         class="c-text-field"
         [class.!border-red]="hasVisibleErrors(fg.controls.firstName)"
+        data-test="first-name"
         type="text"
         id="f-first-name"
         formControlName="firstName"
@@ -32,6 +33,7 @@
       <input
         class="c-text-field"
         [class.!border-red]="hasVisibleErrors(fg.controls.lastName)"
+        data-test="last-name"
         type="text"
         id="f-last-name"
         formControlName="lastName"
@@ -49,6 +51,7 @@
     <input
       class="c-text-field"
       [class.!border-red]="hasVisibleErrors(fg.controls.email)"
+      data-test="email"
       type="email"
       id="f-email"
       formControlName="email"
@@ -78,6 +81,7 @@
         >
           <input
             class="absolute left-0 h-full w-full cursor-pointer appearance-none rounded"
+            data-test="query-type-{{ i }}"
             type="radio"
             id="f-query-type-{{ i }}"
             formControlName="query"
@@ -115,6 +119,7 @@
     <textarea
       class="c-text-field h-[240px] resize-none md:h-[132px] xl:h-[105px]"
       [class.!border-red]="hasVisibleErrors(fg.controls.message)"
+      data-test="message"
       id="f-message"
       formControlName="message"
       autocomplete="off"
@@ -131,6 +136,7 @@
       <div class="relative">
         <input
           class="absolute h-full w-full cursor-pointer appearance-none -outline-offset-2"
+          data-test="consent"
           type="checkbox"
           id="f-consent"
           formControlName="consent"
@@ -163,6 +169,7 @@
   <button
     class="text-base-bold py-200 gap-100 hocus-visible:bg-[#063F35] disabled:hover:bg-red flex items-center justify-center rounded bg-green-600 text-white -outline-offset-4 transition-[background-color] disabled:cursor-not-allowed"
     [class.cursor-wait]="isPending()"
+    data-test="submit-button"
     type="submit"
     [disabled]="isSubmissionDisabled()"
   >
