@@ -41,3 +41,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+declare namespace Cypress {
+  interface Chainable<Subject = any> {
+    getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>;
+  }
+}
+
+Cypress.Commands.add("getByData", (attrValue) =>
+  cy.get(`[data-test="${attrValue}"]`),
+);
