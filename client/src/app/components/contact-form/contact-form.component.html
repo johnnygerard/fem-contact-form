@@ -81,7 +81,7 @@
         >
           <input
             class="absolute left-0 h-full w-full cursor-pointer appearance-none rounded"
-            data-test="query-type-{{ i }}"
+            [attr.data-test]="'query-type-' + i"
             type="radio"
             id="f-query-type-{{ i }}"
             formControlName="query"
