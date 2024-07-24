@@ -1,3 +1,4 @@
+import type { ErrorRequestHandler } from "express";
 import express from "express";
 import { env } from "node:process";
 import { createPlainTextEmail, MSGID_REGEX, transporter } from "./mail.js";
@@ -63,6 +64,19 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     next(err);
   }
 });
+
+const defaultErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  if (res.headersSent) return next(err);
+  console.error("Error object:", err);
+  res.status(INTERNAL_SERVER_ERROR).send({
+    message:
+      "Sorry, an unexpected error occurred on our end.\n" +
+      "Please try again later.\n\n" +
+      "If the problem persists, send us an email at support@example.com.",
+  });
+};
+
+app.use(defaultErrorHandler);
 
 if (env.NODE_ENV === "production") {
   // Omitted host defaults to 0.0.0.0 or [::] if IPv6 is supported
