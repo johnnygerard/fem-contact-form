@@ -34,7 +34,10 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     const isValid = validate(req.body);
 
     if (!isValid) {
-      res.status(BAD_REQUEST).json(validate.errors);
+      res.status(BAD_REQUEST).json({
+        error: validate.errors,
+        message: "Sorry, the form data is invalid. Please try again.",
+      });
       return;
     }
 
@@ -52,9 +55,11 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     const msgId = info.response.match(MSGID_REGEX)?.groups?.msgId;
 
     if (!msgId) {
-      res
-        .status(INTERNAL_SERVER_ERROR)
-        .send({ error: "Failed to extract message ID" });
+      res.status(INTERNAL_SERVER_ERROR).send({
+        error: "Failed to extract message ID",
+        message:
+          "Your message was sent, but we couldn't retrieve its public URL.",
+      });
       return;
     }
 
