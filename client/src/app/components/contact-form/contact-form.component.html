@@ -1,8 +1,9 @@
 @if (isSuccess()) {
-  <app-toast @toast />
+  <app-toast data-test="toast" @toast />
 }
 <form
   class="p-300 md:p-500 flex max-w-[480px] flex-col rounded-lg bg-white text-sm md:w-[690px] md:max-w-none xl:w-[736px]"
+  data-test="contact-form"
   [formGroup]="fg"
   (ngSubmit)="onSubmit()"
   spellcheck="false"
@@ -16,6 +17,7 @@
       <input
         class="c-text-field"
         [class.!border-red]="hasVisibleErrors(fg.controls.firstName)"
+        data-test="first-name"
         type="text"
         id="f-first-name"
         formControlName="firstName"
@@ -32,6 +34,7 @@
       <input
         class="c-text-field"
         [class.!border-red]="hasVisibleErrors(fg.controls.lastName)"
+        data-test="last-name"
         type="text"
         id="f-last-name"
         formControlName="lastName"
@@ -49,6 +52,7 @@
     <input
       class="c-text-field"
       [class.!border-red]="hasVisibleErrors(fg.controls.email)"
+      data-test="email"
       type="email"
       id="f-email"
       formControlName="email"
@@ -74,11 +78,13 @@
       ) {
         <div
           class="py-150 px-300 gap-150 relative flex cursor-pointer items-center rounded border border-gray-500 bg-white transition-colors has-[:checked]:bg-green-200 hover:has-[:checked]:bg-white md:flex-1 [&:is(:hover,:has(:checked,:focus))]:border-green-600"
-          (click)="radio.click()"
+          (click)="radio.checked = true"
         >
           <input
             class="absolute left-0 h-full w-full cursor-pointer appearance-none rounded"
+            [attr.data-test]="'query-type-' + i"
             type="radio"
+            name="query"
             id="f-query-type-{{ i }}"
             formControlName="query"
             [value]="i"
@@ -115,6 +121,7 @@
     <textarea
       class="c-text-field h-[240px] resize-none md:h-[132px] xl:h-[105px]"
       [class.!border-red]="hasVisibleErrors(fg.controls.message)"
+      data-test="message"
       id="f-message"
       formControlName="message"
       autocomplete="off"
@@ -131,6 +138,7 @@
       <div class="relative">
         <input
           class="absolute h-full w-full cursor-pointer appearance-none -outline-offset-2"
+          data-test="consent"
           type="checkbox"
           id="f-consent"
           formControlName="consent"
@@ -163,6 +171,7 @@
   <button
     class="text-base-bold py-200 gap-100 hocus-visible:bg-[#063F35] disabled:hover:bg-red flex items-center justify-center rounded bg-green-600 text-white -outline-offset-4 transition-[background-color] disabled:cursor-not-allowed"
     [class.cursor-wait]="isPending()"
+    data-test="submit-button"
     type="submit"
     [disabled]="isSubmissionDisabled()"
   >
