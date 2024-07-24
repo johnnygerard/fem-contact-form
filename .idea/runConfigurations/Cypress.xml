@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Cypress" type="CompoundRunConfigurationType">
+    <toRun name="Express" type="js.build_tools.npm" />
+    <toRun name="cy:open" type="js.build_tools.npm" />
+    <toRun name="ng:serve" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>
