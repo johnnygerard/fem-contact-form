@@ -1,8 +1,9 @@
 @if (isSuccess()) {
-  <app-toast @toast />
+  <app-toast data-test="toast" @toast />
 }
 <form
   class="p-300 md:p-500 flex max-w-[480px] flex-col rounded-lg bg-white text-sm md:w-[690px] md:max-w-none xl:w-[736px]"
+  data-test="contact-form"
   [formGroup]="fg"
   (ngSubmit)="onSubmit()"
   spellcheck="false"
