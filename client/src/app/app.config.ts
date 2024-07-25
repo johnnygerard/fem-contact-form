@@ -14,6 +14,7 @@ import {
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { nonHttpErrorInterceptor } from "./nonHttpError.interceptor";
 import { GlobalErrorHandler } from "./global-error-handler";
+import { provideClientHydration } from "@angular/platform-browser";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withFetch(), withInterceptors([nonHttpErrorInterceptor])),
     provideAnimationsAsync(
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "noop"
         : "animations",
     ),
@@ -29,5 +31,6 @@ export const appConfig: ApplicationConfig = {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler,
     },
+    provideClientHydration(),
   ],
 };

@@ -7,6 +7,11 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: ["client/.angular/cache", "server/dist"],
+    ignores: [
+      "client/cypress/support/commands.ts",
+      "client/dist/",
+      "client/.angular/cache/",
+      "server/dist/",
+    ],
   },
 );
