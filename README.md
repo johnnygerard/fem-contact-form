@@ -1,13 +1,15 @@
 # Frontend Mentor | Contact form
 
-This is my solution to the [Contact form challenge](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj) from [Frontend Mentor](https://www.frontendmentor.io/).
+This is my solution to the [Contact form challenge](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj) from [Frontend Mentor](https://www.frontendmentor.io/).  
+On form submission, emails are sent but not delivered to their recipient. Instead, they are intercepted by the [Ethereal](https://ethereal.email/) fake SMTP service.
+Messages self-destruct after a few hours. You can access the Ethereal email by visiting the public URL in the browser console.
 
-[![project status](https://img.shields.io/badge/status-solution%20published-success?style=for-the-badge)](https://fem-contact-form-jgerard.vercel.app/)
+[![project status](https://img.shields.io/badge/status-solution%20published-success?style=for-the-badge)](https://www.frontendmentor.io/solutions/full-stack-contact-form-with-ethereal-fake-smtp-service-dXGW_-jm12)
 
 ## Links
 
 - [Live website](https://fem-contact-form-jgerard.vercel.app/)
-<!-- - [Solution](placeholder) -->
+- [Solution](https://www.frontendmentor.io/solutions/full-stack-contact-form-with-ethereal-fake-smtp-service-dXGW_-jm12)
 - [Challenge](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj)
 - [Lighthouse report](https://googlechrome.github.io/lighthouse/viewer/?gist=e67a1fec6493f4389e2a7dd30756c976)
 
