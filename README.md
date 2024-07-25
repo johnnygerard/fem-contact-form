@@ -1,8 +1,9 @@
 # Frontend Mentor | Contact form
 
-This is my solution to the [Contact form challenge](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj) from [Frontend Mentor](https://www.frontendmentor.io/).  
-On form submission, emails are sent but not delivered to their recipient. Instead, they are intercepted by the [Ethereal](https://ethereal.email/) fake SMTP service.
-Messages self-destruct after a few hours. You can access the Ethereal email by visiting the public URL in the browser console.
+This is my solution to the [Contact form challenge](https://www.frontendmentor.io/challenges/contact-form--G-hYlqKJj) from [Frontend Mentor](https://www.frontendmentor.io/).
+
+On form submission, emails are sent but not delivered to their recipient. Instead, they are intercepted by the [Ethereal](https://ethereal.email/) fake SMTP service and
+messages self-destruct after a few hours. You can access the Ethereal email by visiting the public URL in the browser console.
 
 [![project status](https://img.shields.io/badge/status-solution%20published-success?style=for-the-badge)](https://www.frontendmentor.io/solutions/full-stack-contact-form-with-ethereal-fake-smtp-service-dXGW_-jm12)
 
@@ -29,11 +30,13 @@ Note: The Heroku web dyno (container) sleeps after 30 minutes of inactivity (see
 
 ## Key Features
 
+- [Angular reactive forms](https://angular.dev/guide/forms/reactive-forms)
 - Mail service with [Nodemailer](https://nodemailer.com/) and [Ethereal](https://ethereal.email/)
 - CORS-enabled REST API
 - JSON schema validation with [Ajv](https://ajv.js.org/)
 - [Angular prerendering (SSG)](https://angular.dev/guide/prerendering)
 - Responsive design
+- Custom form controls
 - CSS transitions and [Angular animations](https://angular.dev/guide/animations)
 - End-to-end testing with [Cypress](https://www.cypress.io/)
 
