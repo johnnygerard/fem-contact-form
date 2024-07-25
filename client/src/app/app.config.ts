@@ -22,7 +22,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withFetch(), withInterceptors([nonHttpErrorInterceptor])),
     provideAnimationsAsync(
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "noop"
         : "animations",
     ),

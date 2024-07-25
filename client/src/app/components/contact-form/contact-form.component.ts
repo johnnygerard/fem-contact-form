@@ -66,7 +66,7 @@ export class ContactFormComponent implements OnDestroy {
   #timeoutId = 0;
 
   ngOnDestroy(): void {
-    window.clearTimeout(this.#timeoutId);
+    typeof window !== "undefined" && window.clearTimeout(this.#timeoutId);
   }
 
   hasVisibleErrors(control: FormControl, errorCode?: string): boolean {
