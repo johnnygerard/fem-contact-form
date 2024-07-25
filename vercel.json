@@ -2,5 +2,16 @@
   "buildCommand": "cd client && npm run vercel:build",
   "framework": "angular",
   "installCommand": "npm update --global npm && cd client && npm ci",
-  "outputDirectory": "client/dist/fem-contact-form/browser"
+  "outputDirectory": "client/dist/fem-contact-form/browser",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "x-robots-tag",
+          "value": "none"
+        }
+      ]
+    }
+  ]
 }
