@@ -1,3 +1,4 @@
+import type { ErrorRequestHandler } from "express";
 import express from "express";
 import { env } from "node:process";
 import { createPlainTextEmail, MSGID_REGEX, transporter } from "./mail.js";
@@ -33,7 +34,10 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     const isValid = validate(req.body);
 
     if (!isValid) {
-      res.status(BAD_REQUEST).json(validate.errors);
+      console.error(validate.errors);
+      res.status(BAD_REQUEST).json({
+        message: "Sorry, the form data is invalid. Please try again.",
+      });
       return;
     }
 
@@ -51,18 +55,34 @@ app.post("/api/contact-us", jsonParser, async (req, res, next) => {
     const msgId = info.response.match(MSGID_REGEX)?.groups?.msgId;
 
     if (!msgId) {
-      res
-        .status(INTERNAL_SERVER_ERROR)
-        .send({ error: "Failed to extract message ID" });
+      console.error("Failed to extract message ID");
+      res.status(INTERNAL_SERVER_ERROR).json({
+        message:
+          "Your message was sent, but we couldn't retrieve its public URL.",
+      });
       return;
     }
 
     const publicUrl = `https://ethereal.email/message/${msgId}`;
-    res.send({ publicUrl });
+    res.json({ publicUrl });
   } catch (err) {
     next(err);
   }
 });
+
+const defaultErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  if (res.headersSent) return next(err);
+
+  console.error(err);
+  res.status(INTERNAL_SERVER_ERROR).json({
+    message:
+      "Sorry, an unexpected error occurred on our end.\n" +
+      "Please try again later.\n\n" +
+      "If the problem persists, send us an email at support@example.com.",
+  });
+};
+
+app.use(defaultErrorHandler);
 
 if (env.NODE_ENV === "production") {
   // Omitted host defaults to 0.0.0.0 or [::] if IPv6 is supported
