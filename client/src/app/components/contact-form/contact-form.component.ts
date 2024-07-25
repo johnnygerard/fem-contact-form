@@ -94,16 +94,23 @@ export class ContactFormComponent implements OnDestroy {
       .post<{
         publicUrl: string;
       }>(`${environment.apiUrl}/api/contact-us`, payload)
-      .subscribe((response) => {
-        window.console.log("Message sent:", response.publicUrl);
-        this.isSuccess.set(true);
-        this.isPending.set(false);
-        this.ngForm().resetForm();
+      .subscribe({
+        next: (response) => {
+          window.console.log("Message sent:", response.publicUrl);
+          this.isSuccess.set(true);
+          this.isPending.set(false);
+          this.ngForm().resetForm();
 
-        const TTL = 5000;
-        this.#timeoutId = window.setTimeout(() => {
-          this.isSuccess.set(false);
-        }, TTL);
+          const TTL = 5000;
+          this.#timeoutId = window.setTimeout(() => {
+            this.isSuccess.set(false);
+          }, TTL);
+        },
+        error: (error: { message: string }) => {
+          window.console.error(error);
+          this.isPending.set(false);
+          alert(error.message);
+        },
       });
 
     this.isPending.set(true);
