@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection } from "@angular/core";
+import {
+  ApplicationConfig,
+  ErrorHandler,
+  provideZoneChangeDetection,
+} from "@angular/core";
 import { provideRouter } from "@angular/router";
 
 import { routes } from "./app.routes";
@@ -9,6 +13,7 @@ import {
 } from "@angular/common/http";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { nonHttpErrorInterceptor } from "./nonHttpError.interceptor";
+import { GlobalErrorHandler } from "./global-error-handler";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +25,9 @@ export const appConfig: ApplicationConfig = {
         ? "noop"
         : "animations",
     ),
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler,
+    },
   ],
 };
